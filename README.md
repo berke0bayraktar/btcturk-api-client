@@ -312,7 +312,7 @@ client = btcTurkClient(API_KEY, API_SECRET)
     }
     ```
  - #### submitStopMarketOrder(pair, orderType, stopPrice, quantity)
-     Places a limit order for specified pair.  
+     Places a stop market order for specified pair.  
      
      Parameters:
      * `orderType` : `'buy'`, `'sell'`
@@ -339,7 +339,7 @@ client = btcTurkClient(API_KEY, API_SECRET)
     }
     ```
  - #### submitStopLimitOrder(pair, orderType, stopPrice, limitPrice, quantity)
-     Places a limit order for specified pair.  
+     Places a stop limit order for specified pair.  
      
      Parameters:
      * `orderType` : `'buy'`, `'sell'`
