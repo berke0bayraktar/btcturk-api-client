@@ -112,7 +112,7 @@ client = btcTurkClient(API_KEY, API_SECRET)
   ]
   ```
 - #### getOHLC(pair, count) 
-  Retrieves daily OHCL data of specified pair for the last `count` days. Default for `count` is 10.
+  Retrieves daily OHLC data of specified pair for the last `count` days. Default for `count` is 10.
   ```js
   client.getOHLC('BTC-TRY', 1)
   ```
