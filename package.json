@@ -1,6 +1,6 @@
 {
   "name": "btcturk-api-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A promise based javascript client (wrapper) for BtcTurk API",
   "main": "index.js",
   "scripts": {
