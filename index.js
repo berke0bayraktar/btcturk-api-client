@@ -96,27 +96,6 @@ module.exports = function(apiKey=null, apiSecret=null) {
     function _getAuthHeaders() {
 
         /*
-        * A 'signature' must be provided within the http headers for endpoints that require authentication
-        * This signature depends on the unix time therefore headers have to be updated on each request
-        */
-
-        const now = new Date();
-        return {
-            "X-PCK": API_KEY,
-            "X-Stamp": now.getTime().toString(),
-            "X-Signature": _getSignature(),
-        }
-    }
-
-    function _constructURL(pathname) {
-        const url = new URL(API_BASE);
-        url.pathname = pathname;
-        return url;
-    }
-
-    function _getSignature() {
-
-        /*
         * Generates a HMAC-SHA256 encoded message for authentication
         *
         * Current unix timestamp is used as cryptographic nonce for creating the signature
@@ -131,7 +110,24 @@ module.exports = function(apiKey=null, apiSecret=null) {
         const digest = signature_buffer.digest()
         const b64_encoded_signature_buffer = Buffer.from(digest.toString('base64'), 'utf8')
         const signature = b64_encoded_signature_buffer.toString('utf8')
-        return signature;
+
+        /*
+        * A 'signature' must be provided within the http headers for endpoints that require authentication
+        * This signature depends on the unix time therefore headers have to be updated on each request
+        */
+
+        const now = new Date();
+        return {
+            "X-PCK": API_KEY,
+            "X-Stamp": stamp.toString(),
+            "X-Signature": signature,
+        }
+    }
+
+    function _constructURL(pathname) {
+        const url = new URL(API_BASE);
+        url.pathname = pathname;
+        return url;
     }
 
     function _getPairSymbol(pair, del='') {
